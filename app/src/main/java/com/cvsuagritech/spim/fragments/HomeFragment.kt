@@ -1,4 +1,4 @@
-package com.cvsuagritech.spim
+package com.cvsuagritech.spim.fragments
 
 import android.app.Activity
 import android.content.ContentValues
@@ -12,33 +12,54 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.cvsuagritech.spim.databinding.ActivityMainBinding
+import androidx.fragment.app.Fragment
+import com.cvsuagritech.spim.R
+import com.cvsuagritech.spim.database.PestDatabaseHelper
+import com.cvsuagritech.spim.databinding.FragmentHomeBinding
 import com.cvsuagritech.spim.ml.BirdsModel
+import com.cvsuagritech.spim.models.PestRecord
 import org.tensorflow.lite.support.image.TensorImage
 import java.io.IOException
 import kotlin.math.roundToInt
 
-class MainActivity : AppCompatActivity() {
+class HomeFragment : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    
+    private lateinit var databaseHelper: PestDatabaseHelper
     private val GALLERY_REQUEST_CODE = 133
     private var isAnalyzing = false
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        databaseHelper = PestDatabaseHelper(requireContext())
         setupUI()
         setupClickListeners()
         updateStatus(getString(R.string.status_ready))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setupUI() {
@@ -55,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Camera button
         binding.btnCaptureImage.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
+            if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED
             ) {
                 takePicturePreview.launch(null)
@@ -67,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         // Gallery button
         binding.btnLoadImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
-                    this,
+                    requireContext(),
                     android.Manifest.permission.READ_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
@@ -162,12 +183,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showError(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
         updateStatus(getString(R.string.status_error))
     }
 
     private fun showSuccess(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         updateStatus(getString(R.string.status_complete))
     }
 
@@ -214,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                     result?.data?.data?.let { uri ->
                         Log.i("TAG", "OnResultReceived: $uri")
                         try {
-                            val bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(uri))
+                            val bitmap = BitmapFactory.decodeStream(requireContext().contentResolver.openInputStream(uri))
                             if (bitmap != null) {
                                 binding.ImageView.setImageBitmap(bitmap)
                                 showImageActions()
@@ -249,7 +270,7 @@ class MainActivity : AppCompatActivity() {
         
         try {
             // Declaring tensor flow lite model variable
-            val model = BirdsModel.newInstance(this)
+            val model = BirdsModel.newInstance(requireContext())
 
             // Converting bitmap into tensor flow image
             val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
@@ -265,8 +286,17 @@ class MainActivity : AppCompatActivity() {
             val highProbabilityOutput = outputs[0]
             val confidence = (highProbabilityOutput.score * 100).roundToInt()
 
+            // Save to database
+            val pestRecord = PestRecord(
+                pestName = highProbabilityOutput.label,
+                confidence = highProbabilityOutput.score,
+                imageBlob = databaseHelper.bitmapToByteArray(bitmap),
+                timestamp = System.currentTimeMillis()
+            )
+            databaseHelper.insertPestRecord(pestRecord)
+
             // Update UI on main thread
-            runOnUiThread {
+            requireActivity().runOnUiThread {
                 binding.loadingOverlay.visibility = View.GONE
                 
                 // Set result text
@@ -291,7 +321,7 @@ class MainActivity : AppCompatActivity() {
 
         } catch (e: Exception) {
             Log.e("TAG", "Error during analysis: ${e.message}")
-            runOnUiThread {
+            requireActivity().runOnUiThread {
                 binding.loadingOverlay.visibility = View.GONE
                 showError(getString(R.string.error_analysis_failed))
                 isAnalyzing = false
@@ -319,7 +349,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.dialog_save_title))
             .setMessage(getString(R.string.dialog_save_message))
             .setPositiveButton(getString(R.string.dialog_yes)) { _, _ ->
@@ -334,7 +364,7 @@ class MainActivity : AppCompatActivity() {
     // Modern function to save a bitmap to the device's gallery
     private fun downloadImage(bitmap: Bitmap) {
         val fileName = "SPIM_Pest_Image_${System.currentTimeMillis()}.png"
-        val resolver = contentResolver
+        val resolver = requireContext().contentResolver
 
         val imageCollection = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
@@ -354,7 +384,7 @@ class MainActivity : AppCompatActivity() {
 
         if (imageUri == null) {
             showError(getString(R.string.error_save_failed))
-            Log.e("MainActivity", "Failed to create new MediaStore record.")
+            Log.e("HomeFragment", "Failed to create new MediaStore record.")
             return
         }
 
@@ -376,7 +406,7 @@ class MainActivity : AppCompatActivity() {
             // If something went wrong, delete the pending entry.
             resolver.delete(imageUri, null, null)
             showError(getString(R.string.error_save_failed))
-            Log.e("MainActivity", "Failed to save bitmap.", e)
+            Log.e("HomeFragment", "Failed to save bitmap.", e)
         }
     }
 }
