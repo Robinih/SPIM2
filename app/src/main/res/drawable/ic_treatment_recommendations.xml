@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Medicine Bottle -->
+    <path
+        android:fillColor="@color/accent_modern_blue"
+        android:pathData="M16,12 L16,36 C16,38.2 17.8,40 20,40 L28,40 C30.2,40 32,38.2 32,36 L32,12 L16,12 Z" />
+    
+    <!-- Bottle Cap -->
+    <path
+        android:fillColor="@color/accent_modern_orange"
+        android:pathData="M14,8 L34,8 C35.1,8 36,8.9 36,10 L36,12 L12,12 L12,10 C12,8.9 12.9,8 14,8 Z" />
+    
+    <!-- Cross Symbol -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M24,20 L24,28 M20,24 L28,24" />
+    
+    <!-- Droplets -->
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="8"
+        android:centerY="20"
+        android:radius="2dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="40"
+        android:centerY="24"
+        android:radius="2dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="6"
+        android:centerY="32"
+        android:radius="1.5dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="42"
+        android:centerY="36"
+        android:radius="1.5dp" />
+</vector>

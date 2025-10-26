@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="#E8F5E8"
+        android:pathData="M0,0h200v200h-200z" />
+    
+    <!-- Rice plant -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M100,20 L95,180 L105,180 Z" />
+    
+    <!-- Rice grains -->
+    <circle
+        android:fillColor="#FFD700"
+        android:centerX="100"
+        android:centerY="40"
+        android:radius="8dp" />
+    <circle
+        android:fillColor="#FFD700"
+        android:centerX="100"
+        android:centerY="60"
+        android:radius="8dp" />
+    <circle
+        android:fillColor="#FFD700"
+        android:centerX="100"
+        android:centerY="80"
+        android:radius="8dp" />
+    
+    <!-- Healthy leaves -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M100,50 Q80,40 70,50 Q80,60 100,50" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M100,70 Q120,60 130,70 Q120,80 100,70" />
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M100,90 Q80,80 70,90 Q80,100 100,90" />
+</vector>
+
+
+
+

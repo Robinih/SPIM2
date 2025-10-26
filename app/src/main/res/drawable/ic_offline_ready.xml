@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32"
+    android:tint="@color/accent_purple">
+    
+    <!-- Phone/device -->
+    <path
+        android:fillColor="@color/accent_purple"
+        android:pathData="M8,4 L24,4 C25.1,4 26,4.9 26,6 L26,26 C26,27.1 25.1,28 24,28 L8,28 C6.9,28 6,27.1 6,26 L6,6 C6,4.9 6.9,4 8,4 Z" />
+    
+    <!-- Screen -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M8,6 L24,6 L24,24 L8,24 Z" />
+    
+    <!-- Offline indicator -->
+    <path
+        android:fillColor="@color/accent_purple"
+        android:pathData="M12,8 L20,8 L20,10 L12,10 Z" />
+    <path
+        android:fillColor="@color/accent_purple"
+        android:pathData="M12,12 L18,12 L18,14 L12,14 Z" />
+    
+    <!-- Checkmark -->
+    <path
+        android:fillColor="@color/success_green"
+        android:pathData="M14,18 L16,20 L20,16 L18,14 L16,18 L14,18 Z" />
+</vector>

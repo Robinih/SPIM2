@@ -88,3 +88,4 @@ object ThemeManager {
         applyThemeMode(savedTheme)
     }
 }
+

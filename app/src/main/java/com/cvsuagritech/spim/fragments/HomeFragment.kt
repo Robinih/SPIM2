@@ -6,7 +6,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.VectorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -22,20 +25,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.cvsuagritech.spim.R
-import com.cvsuagritech.spim.database.PestDatabaseHelper
+import com.cvsuagritech.spim.database.CropHealthDatabaseHelper
 import com.cvsuagritech.spim.databinding.FragmentHomeBinding
-import com.cvsuagritech.spim.ml.BirdsModel
-import com.cvsuagritech.spim.models.PestRecord
-import org.tensorflow.lite.support.image.TensorImage
+import com.cvsuagritech.spim.models.CropHealthRecord
+import com.cvsuagritech.spim.utils.CropHealthSimulator
 import java.io.IOException
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     
-    private lateinit var databaseHelper: PestDatabaseHelper
+    private lateinit var databaseHelper: CropHealthDatabaseHelper
     private val GALLERY_REQUEST_CODE = 133
     private var isAnalyzing = false
 
@@ -51,7 +54,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        databaseHelper = PestDatabaseHelper(requireContext())
+        databaseHelper = CropHealthDatabaseHelper(requireContext())
         setupUI()
         setupClickListeners()
         updateStatus(getString(R.string.status_ready))
@@ -65,37 +68,25 @@ class HomeFragment : Fragment() {
     private fun setupUI() {
         // Initialize UI state
         binding.loadingOverlay.visibility = View.GONE
-        binding.confidenceContainer.visibility = View.GONE
-        binding.resultActions.visibility = View.GONE
+        binding.confidenceSection.visibility = View.GONE
+        binding.resultsContent.visibility = View.GONE
+        binding.imageActionsOverlay.visibility = View.GONE
         
         // Set initial text
         binding.tvOutput.text = getString(R.string.placeholder_result)
         binding.confidencePercentage.text = getString(R.string.placeholder_confidence)
+        binding.healthStatus.text = "Healthy"
     }
 
     private fun setupClickListeners() {
-        // Camera button
+        // Camera button - Simulated
         binding.btnCaptureImage.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED
-            ) {
-                takePicturePreview.launch(null)
-            } else {
-                requestPermission.launch(android.Manifest.permission.CAMERA)
-            }
+            simulateCaptureImage()
         }
 
-        // Gallery button
+        // Gallery button - Simulated
         binding.btnLoadImage.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                openGallery()
-            } else {
-                requestStoragePermission.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            }
+            simulateLoadImage()
         }
 
         // Auto-analyze when image is loaded
@@ -106,14 +97,27 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Search online button
-        binding.btnSearchOnline.setOnClickListener {
-            searchOnline(binding.tvOutput.text.toString())
+        // View recommendations button
+        binding.btnViewRecommendations.setOnClickListener {
+            val pestName = binding.tvOutput.text.toString()
+            if (pestName != getString(R.string.placeholder_result)) {
+                showRecommendations(pestName)
+            }
         }
 
-        // Retry button
-        binding.btnRetry.setOnClickListener {
+        // Save to logbook button
+        binding.btnSaveToLogbook.setOnClickListener {
+            saveToLogbook()
+        }
+
+        // Clear image button
+        binding.btnClearImage.setOnClickListener {
             clearImage()
+        }
+
+        // Analyze button
+        binding.btnAnalyze.setOnClickListener {
+            analyzeImage()
         }
 
         // Result text click to search
@@ -149,8 +153,8 @@ class HomeFragment : Fragment() {
     private fun clearImage() {
         binding.ImageView.setImageResource(R.drawable.place_holder)
         binding.tvOutput.text = getString(R.string.placeholder_result)
-        binding.confidenceContainer.visibility = View.GONE
-        binding.resultActions.visibility = View.GONE
+        binding.confidenceSection.visibility = View.GONE
+        binding.resultsContent.visibility = View.GONE
         updateStatus(getString(R.string.status_ready))
     }
 
@@ -269,55 +273,50 @@ class HomeFragment : Fragment() {
         updateStatus(getString(R.string.status_analyzing))
         
         try {
-            // Declaring tensor flow lite model variable
-            val model = BirdsModel.newInstance(requireContext())
-
-            // Converting bitmap into tensor flow image
-            val newBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true)
-            val tfimage = TensorImage.fromBitmap(newBitmap)
-
-            // Process the image using trained model and sort it in descending order
-            val outputs = model.process(tfimage)
-                .probabilityAsCategoryList.apply {
-                    sortByDescending { it.score }
-                }
-
-            // Getting result having high probability
-            val highProbabilityOutput = outputs[0]
-            val confidence = (highProbabilityOutput.score * 100).roundToInt()
-
+            // Simulate analysis delay
+            Thread.sleep(2000)
+            
+            // Convert bitmap to byte array for storage
+            val imageBlob = databaseHelper.bitmapToByteArray(bitmap)
+            
+            // Simulate crop health analysis
+            val cropHealthRecord = CropHealthSimulator.simulateCropHealthAnalysis(imageBlob)
+            
             // Save to database
-            val pestRecord = PestRecord(
-                pestName = highProbabilityOutput.label,
-                confidence = highProbabilityOutput.score,
-                imageBlob = databaseHelper.bitmapToByteArray(bitmap),
-                timestamp = System.currentTimeMillis()
+            val recordId = databaseHelper.insertCropHealthRecord(cropHealthRecord)
+            
+            // Generate treatment recommendations
+            val recommendations = CropHealthSimulator.generateTreatmentRecommendations(
+                cropHealthRecord.copy(id = recordId)
             )
-            databaseHelper.insertPestRecord(pestRecord)
-
+            
+            // Save recommendations to database
+            recommendations.forEach { recommendation ->
+                databaseHelper.insertTreatmentRecommendation(recommendation)
+            }
+            
+            val confidence = (cropHealthRecord.confidence * 100).roundToInt()
+            
             // Update UI on main thread
             requireActivity().runOnUiThread {
                 binding.loadingOverlay.visibility = View.GONE
                 
                 // Set result text
-                binding.tvOutput.text = highProbabilityOutput.label
+                binding.tvOutput.text = cropHealthRecord.getHealthStatusDisplayName()
                 
                 // Show confidence
-                binding.confidenceContainer.visibility = View.VISIBLE
+                binding.confidenceSection.visibility = View.VISIBLE
                 binding.confidencePercentage.text = "$confidence%"
                 binding.confidenceProgress.progress = confidence
                 
                 // Show result actions
-                binding.resultActions.visibility = View.VISIBLE
+                binding.resultsContent.visibility = View.VISIBLE
                 
                 updateStatus(getString(R.string.status_complete))
                 isAnalyzing = false
                 
-                Log.i("TAG", "Analysis complete: $highProbabilityOutput with confidence: $confidence%")
+                Log.i("TAG", "Crop health analysis complete: ${cropHealthRecord.healthStatus} with confidence: $confidence%")
             }
-
-            // Release model resources
-            model.close()
 
         } catch (e: Exception) {
             Log.e("TAG", "Error during analysis: ${e.message}")
@@ -407,6 +406,100 @@ class HomeFragment : Fragment() {
             resolver.delete(imageUri, null, null)
             showError(getString(R.string.error_save_failed))
             Log.e("HomeFragment", "Failed to save bitmap.", e)
+        }
+    }
+    
+    // Simulation methods for demo purposes
+    private fun simulateLoadImage() {
+        // Show loading state
+        updateStatus("Loading demo crop image...")
+        
+        // Simulate loading delay
+        binding.root.postDelayed({
+            val demoImages = listOf(
+                R.drawable.demo_crop_healthy,
+                R.drawable.demo_crop_pest_damage,
+                R.drawable.demo_crop_nutrient_deficiency,
+                R.drawable.demo_crop_disease
+            )
+            
+            val randomImage = demoImages[Random.nextInt(demoImages.size)]
+            val drawable = ContextCompat.getDrawable(requireContext(), randomImage)
+            
+            if (drawable != null) {
+                val bitmap = drawableToBitmap(drawable)
+                binding.ImageView.setImageBitmap(bitmap)
+                updateStatus(getString(R.string.status_ready))
+                
+                // Auto-analyze the loaded image
+                analyzeCurrentImage()
+                
+                Toast.makeText(requireContext(), "Demo crop image loaded successfully!", Toast.LENGTH_SHORT).show()
+            }
+        }, 1000)
+    }
+    
+    private fun simulateCaptureImage() {
+        // Show loading state
+        updateStatus("Capturing demo crop image...")
+        
+        // Simulate camera capture delay
+        binding.root.postDelayed({
+            val demoImages = listOf(
+                R.drawable.demo_crop_healthy,
+                R.drawable.demo_crop_pest_damage,
+                R.drawable.demo_crop_nutrient_deficiency,
+                R.drawable.demo_crop_disease
+            )
+            
+            val randomImage = demoImages[Random.nextInt(demoImages.size)]
+            val drawable = ContextCompat.getDrawable(requireContext(), randomImage)
+            
+            if (drawable != null) {
+                val bitmap = drawableToBitmap(drawable)
+                binding.ImageView.setImageBitmap(bitmap)
+                updateStatus(getString(R.string.status_ready))
+                
+                // Auto-analyze the captured image
+                analyzeCurrentImage()
+                
+                Toast.makeText(requireContext(), "Demo crop image captured successfully!", Toast.LENGTH_SHORT).show()
+            }
+        }, 1500)
+    }
+    
+    private fun drawableToBitmap(drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable) {
+            return drawable.bitmap
+        }
+        
+        val bitmap = Bitmap.createBitmap(
+            drawable.intrinsicWidth,
+            drawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
+    }
+
+    private fun showRecommendations(pestName: String) {
+        // Navigate to recommendations fragment
+        Toast.makeText(requireContext(), "Opening recommendations for $pestName", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveToLogbook() {
+        // Save current analysis to logbook
+        Toast.makeText(requireContext(), "Saved to logbook", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun analyzeImage() {
+        if (binding.ImageView.drawable != null && 
+            binding.ImageView.drawable !is android.graphics.drawable.ColorDrawable) {
+            analyzeCurrentImage()
+        } else {
+            Toast.makeText(requireContext(), "Please select an image first", Toast.LENGTH_SHORT).show()
         }
     }
 }

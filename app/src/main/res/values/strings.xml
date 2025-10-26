@@ -1,42 +1,52 @@
 <resources>
-    <string name="app_name">SPIM</string>
+    <string name="app_name">AgriSight</string>
     
     <!-- Main UI Text -->
-    <string name="app_title">Smart Pest Infestation Monitor</string>
-    <string name="app_subtitle">Identify pests from images to prevent early crop damage</string>
-    <string name="app_description">Advanced AI-powered pest detection for agricultural protection</string>
+    <string name="app_title">AgriSight: Intelligent Crop Health Monitoring</string>
+    <string name="app_subtitle">Monitor rice crop health and get AI-powered treatment recommendations</string>
+    <string name="app_description">Advanced CNN-based crop health analysis for sustainable agriculture</string>
     
     <!-- Button Labels -->
-    <string name="btn_capture_image">📷 Capture Image</string>
-    <string name="btn_load_image">🖼️ Load Image</string>
+    <string name="btn_capture_crop">📷 Capture Crop</string>
+    <string name="btn_load_crop">🖼️ Load Crop Image</string>
+    <string name="btn_capture_image">📷 Demo Capture</string>
+    <string name="btn_load_image">🖼️ Demo Load</string>
     <string name="btn_retry">🔄 Try Again</string>
-    <string name="btn_analyze">🔍 Analyze Image</string>
+    <string name="btn_analyze">🔍 Analyze</string>
+    <string name="btn_analyze_health">🔍 Analyze Crop Health</string>
+    <string name="btn_view_recommendations">💡 View Recommendations</string>
+    <string name="btn_save_to_logbook">📝 Save to Logbook</string>
     
     <!-- Status Messages -->
-    <string name="status_ready">Ready to analyze</string>
-    <string name="status_analyzing">Analyzing image…</string>
-    <string name="status_processing">Processing…</string>
-    <string name="status_complete">Analysis complete</string>
+    <string name="status_ready">Ready to analyze crop health</string>
+    <string name="status_analyzing">Analyzing crop health…</string>
+    <string name="status_processing">Processing crop image…</string>
+    <string name="status_complete">Health analysis complete</string>
     <string name="status_error">Analysis failed</string>
     
     <!-- Result Labels -->
-    <string name="result_detected_pest">Detected Pest:</string>
+    <string name="result_crop_health">Crop Health Status:</string>
+    <string name="result_detected_pest">Detected Condition:</string>
     <string name="result_confidence">Confidence:</string>
-    <string name="result_unknown">Unknown pest detected</string>
-    <string name="result_no_pest">No pest detected</string>
-    <string name="result_tap_to_search">Tap result to search online</string>
-    <string name="result_help_text">Helps reduce crop infestation</string>
+    <string name="result_healthy">Healthy Crop</string>
+    <string name="result_nutrient_deficiency">Nutrient Deficiency</string>
+    <string name="result_pest_damage">Pest Damage</string>
+    <string name="result_disease">Disease Detected</string>
+    <string name="result_no_pest">No issues detected</string>
+    <string name="result_unknown">Unknown condition</string>
+    <string name="result_tap_to_search">Tap for treatment recommendations</string>
+    <string name="result_help_text">Promotes sustainable crop management</string>
     
     <!-- Placeholder Text -->
-    <string name="placeholder_image">No image selected</string>
-    <string name="placeholder_result">Result will appear here</string>
+    <string name="placeholder_image">No crop image selected</string>
+    <string name="placeholder_result">Crop health result will appear here</string>
     <string name="placeholder_confidence">--%</string>
     
     <!-- Permission Messages -->
     <string name="permission_camera_title">Camera Permission Required</string>
-    <string name="permission_camera_message">SPIM needs camera access to capture pest images for analysis.</string>
+    <string name="permission_camera_message">AgriSight needs camera access to capture crop images for health analysis.</string>
     <string name="permission_storage_title">Storage Permission Required</string>
-    <string name="permission_storage_message">SPIM needs storage access to load and save pest images.</string>
+    <string name="permission_storage_message">AgriSight needs storage access to load and save crop images.</string>
     <string name="permission_denied">Permission denied. Please enable in settings.</string>
     <string name="permission_granted">Permission granted</string>
     
@@ -76,26 +86,41 @@
     
     <!-- Welcome Screen -->
     <string name="btn_get_started">Get Started</string>
-    <string name="feature_camera_title">Camera Capture</string>
-    <string name="feature_camera_desc">Take photos of pests for instant identification</string>
-    <string name="feature_ai_title">AI Analysis</string>
-    <string name="feature_ai_desc">Advanced machine learning for accurate pest detection</string>
+    <string name="feature_camera_title">Crop Health Monitoring</string>
+    <string name="feature_camera_desc">Capture rice crop images for instant health analysis</string>
+    <string name="feature_ai_title">AI-Powered Analysis</string>
+    <string name="feature_ai_desc">YOLOv11 CNN algorithm for comprehensive crop health assessment</string>
+    <string name="feature_recommendations_title">Treatment Recommendations</string>
+    <string name="feature_recommendations_desc">Get sustainable treatment suggestions based on crop condition</string>
+    <string name="feature_logbook_title">Digital Farmer Logbook</string>
+    <string name="feature_logbook_desc">Track crop health progress over time with image records</string>
+    <string name="feature_lgu_title">LGU Reporting</string>
+    <string name="feature_lgu_desc">Community-level monitoring and intervention coordination</string>
+    <string name="feature_offline_title">Offline-First Design</string>
+    <string name="feature_offline_desc">Works in remote areas with smart data synchronization</string>
     <string name="feature_history_title">History Tracking</string>
-    <string name="feature_history_desc">Keep track of all your pest identification records</string>
-    <string name="feature_offline_title">Offline Support</string>
-    <string name="feature_offline_desc">Works completely offline with local database</string>
+    <string name="feature_history_desc">Track all your crop health analysis results</string>
     
     <!-- Navigation -->
     <string name="nav_home">Home</string>
-    <string name="nav_history">History</string>
+    <string name="nav_logbook">Logbook</string>
+    <string name="nav_recommendations">Recommendations</string>
+    <string name="nav_reports">Reports</string>
     <string name="nav_settings">Settings</string>
     
-    <!-- History Screen -->
-    <string name="history_subtitle">View your pest identification history</string>
-    <string name="history_empty_title">No Records Yet</string>
-    <string name="history_empty_desc">Start identifying pests to see your history here</string>
-    <string name="btn_clear_history">Clear History</string>
+    <!-- Logbook Screen -->
+    <string name="logbook_subtitle">Digital farmer logbook - track crop health over time</string>
+    <string name="logbook_empty_title">No Records Yet</string>
+    <string name="logbook_empty_desc">Start monitoring crop health to see your logbook here</string>
+    <string name="btn_clear_logbook">Clear Logbook</string>
     <string name="btn_view_details">View Details</string>
+    <string name="btn_export_logbook">Export Logbook</string>
+    
+    <!-- History Screen (Legacy) -->
+    <string name="history_subtitle">View your crop health analysis history</string>
+    <string name="history_empty_title">No Records Yet</string>
+    <string name="history_empty_desc">Start analyzing crop health to see your history here</string>
+    <string name="btn_clear_history">Clear History</string>
     
     <!-- Settings Screen -->
     <string name="settings_subtitle">Customize your app experience</string>
@@ -114,4 +139,71 @@
     <!-- Language Options -->
     <string name="language_english">English</string>
     <string name="language_tagalog">Tagalog</string>
+    
+    <!-- Treatment Recommendations -->
+    <string name="recommendations_title">Treatment Recommendations</string>
+    <string name="recommendations_subtitle">Sustainable solutions for your crop</string>
+    <string name="recommendation_cultural">Cultural Methods</string>
+    <string name="recommendation_biological">Biological Control</string>
+    <string name="recommendation_chemical">Chemical Treatment</string>
+    <string name="recommendation_prevention">Prevention Tips</string>
+    <string name="btn_apply_treatment">Apply Treatment</string>
+    <string name="btn_save_recommendation">Save Recommendation</string>
+    
+    <!-- LGU Reports -->
+    <string name="reports_title">Community Reports</string>
+    <string name="reports_subtitle">Monitor crop health across barangays</string>
+    <string name="report_risk_areas">Risk Areas</string>
+    <string name="report_healthy_areas">Healthy Areas</string>
+    <string name="report_intervention_needed">Intervention Needed</string>
+    <string name="btn_generate_report">Generate Report</string>
+    <string name="btn_export_report">Export Report</string>
+    
+    <!-- Crop Health Status -->
+    <string name="health_healthy">Healthy</string>
+    <string name="health_nutrient_deficiency">Nutrient Deficiency</string>
+    <string name="health_pest_damage">Pest Damage</string>
+    <string name="health_disease">Disease</string>
+    <string name="health_stress">Environmental Stress</string>
+    
+    <!-- Growth Stages -->
+    <string name="stage_seedling">Seedling</string>
+    <string name="stage_vegetative">Vegetative</string>
+    <string name="stage_reproductive">Reproductive</string>
+    <string name="stage_maturity">Maturity</string>
+    <string name="growth_seedling">Seedling</string>
+    <string name="growth_vegetative">Vegetative</string>
+    <string name="growth_reproductive">Reproductive</string>
+    <string name="growth_maturity">Maturity</string>
+    
+    <!-- Health Status -->
+    <string name="health_environmental_stress">Environmental Stress</string>
+    
+    <!-- Sustainability Indicators -->
+    <string name="sustainability_high">High Sustainability</string>
+    <string name="sustainability_medium">Medium Sustainability</string>
+    <string name="sustainability_low">Low Sustainability</string>
+    <string name="sustainability_organic">Organic Recommended</string>
+    <string name="sustainability_chemical">Chemical Treatment</string>
+    
+    <!-- Filter Options -->
+    <string name="filter_all">All</string>
+    <string name="filter_healthy">Healthy</string>
+    <string name="filter_issues">Issues</string>
+    
+    <!-- Feature Titles -->
+    <string name="feature_ai_analysis_title">AI Analysis</string>
+    <string name="feature_crop_monitoring_title">Crop Monitoring</string>
+    <string name="feature_treatment_recommendations_title">Treatment Recommendations</string>
+    <string name="feature_digital_logbook_title">Digital Logbook</string>
+    <string name="feature_lgu_reporting_title">LGU Reporting</string>
+    <string name="feature_sustainability_title">Sustainability</string>
+    
+    <!-- Feature Descriptions -->
+    <string name="feature_ai_analysis_desc">Advanced CNN-based crop health analysis using machine learning</string>
+    <string name="feature_crop_monitoring_desc">Real-time monitoring of crop health and growth stages</string>
+    <string name="feature_treatment_recommendations_desc">AI-powered treatment suggestions for crop issues</string>
+    <string name="feature_digital_logbook_desc">Digital record keeping and tracking of crop health data</string>
+    <string name="feature_lgu_reporting_desc">Automated reporting to Local Government Units</string>
+    <string name="feature_sustainability_desc">Sustainable farming practices and eco-friendly solutions</string>
 </resources>

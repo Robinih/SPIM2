@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Book Cover -->
+    <path
+        android:fillColor="@color/gradient_primary_start"
+        android:pathData="M8,6 L40,6 C41.1,6 42,6.9 42,8 L42,40 C42,41.1 41.1,42 40,42 L8,42 C6.9,42 6,41.1 6,40 L6,8 C6,6.9 6.9,6 8,6 Z" />
+    
+    <!-- Book Pages -->
+    <path
+        android:fillColor="@color/surface_elevated"
+        android:pathData="M10,8 L38,8 L38,40 L10,40 Z" />
+    
+    <!-- Binding -->
+    <path
+        android:fillColor="@color/gradient_primary_end"
+        android:pathData="M8,6 L12,6 L12,42 L8,42 Z" />
+    
+    <!-- Text Lines -->
+    <path
+        android:fillColor="@color/text_modern_secondary"
+        android:strokeWidth="1"
+        android:pathData="M14,14 L34,14" />
+    <path
+        android:fillColor="@color/text_modern_secondary"
+        android:strokeWidth="1"
+        android:pathData="M14,18 L30,18" />
+    <path
+        android:fillColor="@color/text_modern_secondary"
+        android:strokeWidth="1"
+        android:pathData="M14,22 L32,22" />
+    <path
+        android:fillColor="@color/text_modern_secondary"
+        android:strokeWidth="1"
+        android:pathData="M14,26 L28,26" />
+    
+    <!-- Digital Elements -->
+    <circle
+        android:fillColor="@color/accent_modern_green"
+        android:centerX="36"
+        android:centerY="12"
+        android:radius="3dp" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M34,12 L36,14 L38,12" />
+</vector>

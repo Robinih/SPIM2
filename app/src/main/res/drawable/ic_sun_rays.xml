@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120"
+    android:tint="@color/sunrise_yellow"
+    android:alpha="0.3">
+    
+    <!-- Sun rays -->
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M60,10 L62,20 L58,20 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M60,100 L62,110 L58,110 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M10,60 L20,62 L20,58 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M100,60 L110,62 L110,58 Z" />
+    
+    <!-- Diagonal rays -->
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M20,20 L25,25 L22,28 L17,23 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M100,20 L95,25 L98,28 L103,23 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M20,100 L25,95 L22,92 L17,97 Z" />
+    <path
+        android:fillColor="@color/sunrise_yellow"
+        android:pathData="M100,100 L95,95 L98,92 L103,97 Z" />
+    
+    <!-- Center sun -->
+    <circle
+        android:fillColor="@color/sunrise_yellow"
+        android:centerX="60"
+        android:centerY="60"
+        android:radius="8dp" />
+</vector>

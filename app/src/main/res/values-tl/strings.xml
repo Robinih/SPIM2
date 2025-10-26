@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Main UI Text -->
-    <string name="app_title">Smart Pest Infestation Monitor</string>
-    <string name="app_subtitle">Tukuyin ang mga peste mula sa larawan upang maiwasan ang maagang pinsala sa pananim</string>
-    <string name="app_description">Makabagong AI na teknolohiya para sa pagtukoy ng peste at proteksyon sa agrikultura</string>
+    <string name="app_title">AgriSight</string>
+    <string name="app_subtitle">Intelligent Crop Health Monitoring System</string>
+    <string name="app_description">Makabagong AI na teknolohiya para sa pagsubaybay sa kalusugan ng pananim at pagbibigay ng mga rekomendasyon sa paggamot</string>
 
     <!-- Button Labels -->
-    <string name="btn_capture_image">📷 Kunan ng Larawan</string>
-    <string name="btn_load_image">🖼️ Mag-load ng Larawan</string>
+    <string name="btn_capture_image">📷 Demo Kunan</string>
+    <string name="btn_load_image">🖼️ Demo Load</string>
     <string name="btn_retry">🔄 Subukan Muli</string>
     <string name="btn_analyze">🔍 Suriin ang Larawan</string>
 
@@ -19,12 +19,12 @@
     <string name="status_error">Nabigo ang pagsusuri</string>
 
     <!-- Result Labels -->
-    <string name="result_detected_pest">Natukoy na Peste:</string>
+    <string name="result_detected_pest">Natukoy na Kalusugan ng Pananim:</string>
     <string name="result_confidence">Katiyakan:</string>
-    <string name="result_unknown">Hindi kilalang peste ang natukoy</string>
-    <string name="result_no_pest">Walang natukoy na peste</string>
-    <string name="result_tap_to_search">Pindutin ang resulta upang maghanap online</string>
-    <string name="result_help_text">Tumutulong upang mabawasan ang peste sa pananim</string>
+    <string name="result_unknown">Hindi kilalang kondisyon ang natukoy</string>
+    <string name="result_no_pest">Walang natukoy na isyu sa pananim</string>
+    <string name="result_tap_to_search">Pindutin ang resulta upang makita ang mga rekomendasyon</string>
+    <string name="result_help_text">Tumutulong upang mapabuti ang kalusugan ng pananim</string>
 
     <!-- Placeholder Text -->
     <string name="placeholder_image">Walang napiling larawan</string>
@@ -86,7 +86,9 @@
 
     <!-- Navigation -->
     <string name="nav_home">Home</string>
-    <string name="nav_history">Kasaysayan</string>
+    <string name="nav_logbook">Logbook</string>
+    <string name="nav_recommendations">Mga Rekomendasyon</string>
+    <string name="nav_reports">Mga Ulat</string>
     <string name="nav_settings">Mga Setting</string>
 
     <!-- History Screen -->
@@ -113,5 +115,61 @@
     <!-- Language Options -->
     <string name="language_english">Ingles</string>
     <string name="language_tagalog">Tagalog</string>
+
+    <!-- New AgriSight Features -->
+    <string name="logbook_subtitle">Tingnan ang iyong logbook ng kalusugan ng pananim</string>
+    <string name="logbook_empty_title">Wala Pang Rekord sa Logbook</string>
+    <string name="logbook_empty_desc">Simulan ang pagsusuri ng kalusugan ng pananim upang lumabas dito ang iyong logbook</string>
+    <string name="btn_clear_logbook">Burahin ang Logbook</string>
+    
+    <string name="recommendations_subtitle">Tingnan ang mga rekomendasyon sa paggamot para sa iyong mga pananim</string>
+    <string name="recommendation_cultural">Kultural</string>
+    <string name="recommendation_biological">Biyolohikal</string>
+    <string name="recommendation_chemical">Kemikal</string>
+    <string name="recommendation_prevention">Pag-iwas</string>
+    <string name="btn_apply_treatment">Ilapat ang Paggamot</string>
+    
+    <string name="reports_subtitle">Bumuo at tingnan ang mga ulat ng LGU para sa monitoring ng pananim</string>
+    <string name="btn_generate_report">Bumuo ng Ulat</string>
+    
+    <!-- Crop Health Status -->
+    <string name="health_healthy">Malusog</string>
+    <string name="health_nutrient_deficiency">Kakulangan sa Nutrisyon</string>
+    <string name="health_pest_damage">Pinsala ng Peste</string>
+    <string name="health_disease">Sakit</string>
+    <string name="health_environmental_stress">Stress sa Kapaligiran</string>
+    
+    <!-- Growth Stages -->
+    <string name="growth_seedling">Binhi</string>
+    <string name="growth_vegetative">Berdeng Yugto</string>
+    <string name="growth_reproductive">Reproductive</string>
+    <string name="growth_maturity">Hinog na</string>
+    
+    <!-- Sustainability Levels -->
+    <string name="sustainability_high">Mataas na Sustainability</string>
+    <string name="sustainability_medium">Katamtamang Sustainability</string>
+    <string name="sustainability_low">Mababang Sustainability</string>
+    <string name="sustainability_chemical">Kemikal na Paggamot</string>
+    
+    <!-- Filter Options -->
+    <string name="filter_all">Lahat</string>
+    <string name="filter_healthy">Malusog</string>
+    <string name="filter_issues">May Problema</string>
+    
+    <!-- Feature Titles -->
+    <string name="feature_ai_analysis_title">AI Pagsusuri</string>
+    <string name="feature_crop_monitoring_title">Pagsubaybay sa Pananim</string>
+    <string name="feature_treatment_recommendations_title">Mga Rekomendasyon sa Paggamot</string>
+    <string name="feature_digital_logbook_title">Digital na Talaan</string>
+    <string name="feature_lgu_reporting_title">Ulat sa LGU</string>
+    <string name="feature_sustainability_title">Sustainability</string>
+    
+    <!-- Feature Descriptions -->
+    <string name="feature_ai_analysis_desc">Makabagong pagsusuri ng kalusugan ng pananim gamit ang machine learning</string>
+    <string name="feature_crop_monitoring_desc">Real-time na pagsubaybay sa kalusugan at yugto ng paglaki ng pananim</string>
+    <string name="feature_treatment_recommendations_desc">Mga mungkahi sa paggamot na pinapagana ng AI para sa mga problema ng pananim</string>
+    <string name="feature_digital_logbook_desc">Digital na pagtatala at pagsubaybay ng datos ng kalusugan ng pananim</string>
+    <string name="feature_lgu_reporting_desc">Awtomatikong pag-uulat sa mga Lokal na Pamahalaang Unit</string>
+    <string name="feature_sustainability_desc">Sustainable na mga gawi sa pagsasaka at mga solusyong eco-friendly</string>
 
 </resources>

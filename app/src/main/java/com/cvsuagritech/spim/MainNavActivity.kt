@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.cvsuagritech.spim.databinding.ActivityMainNavBinding
-import com.cvsuagritech.spim.fragments.HistoryFragment
+import com.cvsuagritech.spim.fragments.LogbookFragment
 import com.cvsuagritech.spim.fragments.HomeFragment
+import com.cvsuagritech.spim.fragments.RecommendationsFragment
 import com.cvsuagritech.spim.fragments.SettingsFragment
 import com.cvsuagritech.spim.utils.LanguageManager
 import com.cvsuagritech.spim.utils.ThemeManager
+import com.cvsuagritech.spim.utils.DemoDataGenerator
 
 class MainNavActivity : AppCompatActivity() {
 
@@ -29,6 +31,9 @@ class MainNavActivity : AppCompatActivity() {
 
         setupBottomNavigation()
         
+        // Initialize demo data
+        DemoDataGenerator.initializeDemoDataIfNeeded(this)
+        
         // Set default fragment
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
@@ -44,8 +49,12 @@ class MainNavActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                     true
                 }
-                R.id.nav_history -> {
-                    replaceFragment(HistoryFragment())
+                R.id.nav_logbook -> {
+                    replaceFragment(LogbookFragment())
+                    true
+                }
+                R.id.nav_recommendations -> {
+                    replaceFragment(RecommendationsFragment())
                     true
                 }
                 R.id.nav_settings -> {

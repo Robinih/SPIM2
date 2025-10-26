@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    
+    <!-- Rice plant stem -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:strokeWidth="4"
+        android:strokeColor="@color/primary_green_dark"
+        android:pathData="M50,15 L52,85 L48,85 Z" />
+    
+    <!-- Rice leaves -->
+    <path
+        android:fillColor="@color/primary_green_light"
+        android:pathData="M50,25 Q35,18 25,25 Q35,32 50,25" />
+    <path
+        android:fillColor="@color/primary_green_light"
+        android:pathData="M50,35 Q65,28 75,35 Q65,42 50,35" />
+    <path
+        android:fillColor="@color/primary_green_light"
+        android:pathData="M50,45 Q35,38 25,45 Q35,52 50,45" />
+    <path
+        android:fillColor="@color/primary_green_light"
+        android:pathData="M50,55 Q65,48 75,55 Q65,62 50,55" />
+    <path
+        android:fillColor="@color/primary_green_light"
+        android:pathData="M50,65 Q35,58 25,65 Q35,72 50,65" />
+    
+    <!-- Rice grains -->
+    <circle
+        android:fillColor="@color/warm_earth"
+        android:centerX="50"
+        android:centerY="75"
+        android:radius="5dp" />
+    <circle
+        android:fillColor="@color/warm_earth"
+        android:centerX="50"
+        android:centerY="82"
+        android:radius="5dp" />
+    <circle
+        android:fillColor="@color/warm_earth"
+        android:centerX="50"
+        android:centerY="89"
+        android:radius="5dp" />
+</vector>

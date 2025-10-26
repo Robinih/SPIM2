@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Crop Plant -->
+    <path
+        android:fillColor="@color/accent_modern_green"
+        android:pathData="M24,8 L20,40 L28,40 Z" />
+    
+    <!-- Rice Grains -->
+    <circle
+        android:fillColor="@color/sunrise_yellow"
+        android:centerX="24"
+        android:centerY="12"
+        android:radius="3dp" />
+    <circle
+        android:fillColor="@color/sunrise_yellow"
+        android:centerX="24"
+        android:centerY="16"
+        android:radius="3dp" />
+    <circle
+        android:fillColor="@color/sunrise_yellow"
+        android:centerX="24"
+        android:centerY="20"
+        android:radius="3dp" />
+    
+    <!-- Leaves -->
+    <path
+        android:fillColor="@color/accent_modern_green"
+        android:pathData="M24,16 Q18,12 16,16 Q18,20 24,16" />
+    <path
+        android:fillColor="@color/accent_modern_green"
+        android:pathData="M24,20 Q30,16 32,20 Q30,24 24,20" />
+    <path
+        android:fillColor="@color/accent_modern_green"
+        android:pathData="M24,24 Q18,20 16,24 Q18,28 24,24" />
+    
+    <!-- Monitoring Dots -->
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="12"
+        android:centerY="12"
+        android:radius="2dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="36"
+        android:centerY="16"
+        android:radius="2dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="8"
+        android:centerY="28"
+        android:radius="2dp" />
+    <circle
+        android:fillColor="@color/accent_modern_blue"
+        android:centerX="40"
+        android:centerY="32"
+        android:radius="2dp" />
+</vector>

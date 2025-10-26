@@ -4,22 +4,64 @@
     <color name="primary_green">#2E7D32</color>
     <color name="primary_green_light">#4CAF50</color>
     <color name="primary_green_dark">#1B5E20</color>
+    <color name="primary_green_50">#E8F5E8</color>
+    <color name="primary_green_100">#C8E6C9</color>
+    <color name="primary_green_200">#A5D6A7</color>
+    <color name="primary_green_300">#81C784</color>
+    <color name="primary_green_400">#66BB6A</color>
+    <color name="primary_green_500">#4CAF50</color>
+    <color name="primary_green_600">#43A047</color>
+    <color name="primary_green_700">#388E3C</color>
+    <color name="primary_green_800">#2E7D32</color>
+    <color name="primary_green_900">#1B5E20</color>
     
     <!-- Secondary Earth Tones -->
     <color name="secondary_brown">#8D6E63</color>
     <color name="secondary_brown_light">#A1887F</color>
     <color name="secondary_brown_dark">#5D4037</color>
+    <color name="secondary_brown_50">#EFEBE9</color>
+    <color name="secondary_brown_100">#D7CCC8</color>
+    <color name="secondary_brown_200">#BCAAA4</color>
+    <color name="secondary_brown_300">#A1887F</color>
+    <color name="secondary_brown_400">#8D6E63</color>
+    <color name="secondary_brown_500">#795548</color>
+    <color name="secondary_brown_600">#6D4C41</color>
+    <color name="secondary_brown_700">#5D4037</color>
+    <color name="secondary_brown_800">#4E342E</color>
+    <color name="secondary_brown_900">#3E2723</color>
     
     <!-- Accent Colors -->
     <color name="accent_orange">#FF7043</color>
     <color name="accent_yellow">#FFC107</color>
     <color name="accent_blue">#2196F3</color>
+    <color name="accent_teal">#00BCD4</color>
+    <color name="accent_purple">#9C27B0</color>
+    <color name="accent_indigo">#3F51B5</color>
     
     <!-- Status Colors -->
     <color name="success_green">#4CAF50</color>
     <color name="warning_orange">#FF9800</color>
     <color name="error_red">#F44336</color>
     <color name="info_blue">#2196F3</color>
+    
+    <!-- Crop Health Status Colors -->
+    <color name="health_healthy">#4CAF50</color>
+    <color name="health_nutrient_deficiency">#FF9800</color>
+    <color name="health_pest_damage">#F44336</color>
+    <color name="health_disease">#C62828</color>
+    <color name="health_environmental_stress">#2196F3</color>
+    
+    <!-- Sustainability Level Colors -->
+    <color name="sustainability_high">#4CAF50</color>
+    <color name="sustainability_medium">#FF9800</color>
+    <color name="sustainability_low">#F44336</color>
+    <color name="sustainability_chemical">#9C27B0</color>
+    
+    <!-- Risk Level Colors -->
+    <color name="risk_low">#4CAF50</color>
+    <color name="risk_medium">#FF9800</color>
+    <color name="risk_high">#F44336</color>
+    <color name="risk_critical">#C62828</color>
     
     <!-- Neutral Colors -->
     <color name="text_primary">#212121</color>
@@ -35,6 +77,54 @@
     <color name="gradient_end">#4CAF50</color>
     <color name="gradient_secondary_start">#8D6E63</color>
     <color name="gradient_secondary_end">#A1887F</color>
+    <color name="gradient_primary_start">#0D4F3C</color>
+    <color name="gradient_primary_end">#1B8A5A</color>
+    <color name="gradient_accent_start">#FF6B35</color>
+    <color name="gradient_accent_end">#F7931E</color>
+    <color name="gradient_blue_start">#1565C0</color>
+    <color name="gradient_blue_end">#42A5F5</color>
+    <color name="gradient_teal_start">#004D40</color>
+    <color name="gradient_teal_end">#26A69A</color>
+    <color name="gradient_purple_start">#6A1B9A</color>
+    <color name="gradient_purple_end">#AB47BC</color>
+    <color name="gradient_orange_start">#E65100</color>
+    <color name="gradient_orange_end">#FF9800</color>
+    
+    <!-- Modern Surface Colors -->
+    <color name="surface_modern">#FAFAFA</color>
+    <color name="surface_elevated">#FFFFFF</color>
+    <color name="surface_overlay">#F5F5F5</color>
+    <color name="surface_card">#FFFFFF</color>
+    
+    <!-- Modern Text Colors -->
+    <color name="text_modern_primary">#1A1A1A</color>
+    <color name="text_modern_secondary">#666666</color>
+    <color name="text_modern_hint">#999999</color>
+    <color name="text_modern_disabled">#CCCCCC</color>
+    
+    <!-- Modern Accent Colors -->
+    <color name="accent_modern_blue">#2196F3</color>
+    <color name="accent_modern_green">#4CAF50</color>
+    <color name="accent_modern_orange">#FF9800</color>
+    <color name="accent_modern_red">#F44336</color>
+    <color name="accent_modern_purple">#9C27B0</color>
+    
+    <!-- Modern Status Colors -->
+    <color name="status_success">#4CAF50</color>
+    <color name="status_warning">#FF9800</color>
+    <color name="status_error">#F44336</color>
+    <color name="status_info">#2196F3</color>
+    
+    <!-- Warm Agricultural Colors -->
+    <color name="warm_green">#52B788</color>
+    <color name="warm_earth">#D4A574</color>
+    <color name="sunrise_yellow">#FFD93D</color>
+    <color name="sky_blue">#87CEEB</color>
+    <color name="warm_white">#FFF8F0</color>
+    <color name="warm_green_light">#7BCF9A</color>
+    <color name="warm_green_dark">#3A8B5F</color>
+    <color name="earth_brown">#B8860B</color>
+    <color name="golden_hour">#FFA726</color>
     
     <!-- Legacy colors for compatibility -->
     <color name="purple_200">#FFBB86FC</color>

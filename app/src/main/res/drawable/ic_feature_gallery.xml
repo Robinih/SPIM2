@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32"
+    android:tint="@color/primary_green">
+    
+    <!-- Gallery frame -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M4,6 L28,6 C29.1,6 30,6.9 30,8 L30,24 C30,25.1 29.1,26 28,26 L4,26 C2.9,26 2,25.1 2,24 L2,8 C2,6.9 2.9,6 4,6 Z" />
+    
+    <!-- Image grid -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M4,8 L14,8 L14,18 L4,18 Z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M16,8 L26,8 L26,18 L16,18 Z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M4,20 L14,20 L14,24 L4,24 Z" />
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M16,20 L26,20 L26,24 L16,24 Z" />
+    
+    <!-- Small crop icons in images -->
+    <circle
+        android:fillColor="@color/warm_green"
+        android:centerX="9"
+        android:centerY="13"
+        android:radius="1dp" />
+    <circle
+        android:fillColor="@color/warm_green"
+        android:centerX="21"
+        android:centerY="13"
+        android:radius="1dp" />
+</vector>

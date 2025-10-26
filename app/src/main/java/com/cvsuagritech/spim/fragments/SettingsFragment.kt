@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.cvsuagritech.spim.R
-import com.cvsuagritech.spim.database.PestDatabaseHelper
+import com.cvsuagritech.spim.database.CropHealthDatabaseHelper
 import com.cvsuagritech.spim.databinding.FragmentSettingsBinding
 import com.cvsuagritech.spim.utils.LanguageManager
 import com.cvsuagritech.spim.utils.ThemeManager
@@ -21,7 +21,7 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     
-    private lateinit var databaseHelper: PestDatabaseHelper
+    private lateinit var databaseHelper: CropHealthDatabaseHelper
     private var currentLanguage = "en"
     private var currentTheme = ThemeManager.THEME_SYSTEM
 
@@ -37,7 +37,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        databaseHelper = PestDatabaseHelper(requireContext())
+        databaseHelper = CropHealthDatabaseHelper(requireContext())
         setupUI()
         setupClickListeners()
         loadAppInfo()
@@ -172,10 +172,10 @@ class SettingsFragment : Fragment() {
 
     private fun showClearAllHistoryDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Clear All History")
-            .setMessage("Are you sure you want to delete all pest identification records? This action cannot be undone.")
+            .setTitle("Clear All Data")
+            .setMessage("Are you sure you want to delete all crop health records? This action cannot be undone.")
             .setPositiveButton("Clear All") { _, _ ->
-                val deletedCount = databaseHelper.deleteAllPestRecords()
+                val deletedCount = databaseHelper.deleteAllCropHealthRecords()
                 if (deletedCount > 0) {
                     loadAppInfo()
                     Toast.makeText(requireContext(), "Cleared $deletedCount records", Toast.LENGTH_SHORT).show()
