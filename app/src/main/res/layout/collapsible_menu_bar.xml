@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/collapsible_menu_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/surface_elevated">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Menu Header -->
+        <LinearLayout
+            android:id="@+id/menu_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/card_modern_elevated"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_menu"
+                android:contentDescription="Menu icon"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/menu_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📍 Farm Map &amp; Community"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_modern_primary" />
+
+            <ImageView
+                android:id="@+id/expand_collapse_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_expand_more"
+                android:contentDescription="Expand/Collapse"
+                android:rotation="0" />
+
+        </LinearLayout>
+
+        <!-- Collapsible Content -->
+        <LinearLayout
+            android:id="@+id/menu_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="12dp">
+
+            <!-- Map Access Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_map"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/button_modern_primary"
+                android:text="🗺️ View Farm Map"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_map"
+                android:drawablePadding="8dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="4dp" />
+
+            <!-- Community Access Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_community"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/button_modern_secondary"
+                android:text="🤝 Community Posts"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_share"
+                android:drawablePadding="8dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="4dp" />
+
+            <!-- Quick Stats -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_modern_elevated"
+                    android:padding="12dp"
+                    android:layout_marginEnd="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_modern_green" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Farms"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_modern_secondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_modern_elevated"
+                    android:padding="12dp"
+                    android:layout_marginHorizontal="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_modern_orange" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Issues Found"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_modern_secondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/card_modern_elevated"
+                    android:padding="12dp"
+                    android:layout_marginStart="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="7"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/accent_modern_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Healthy Farms"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_modern_secondary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Recent Alerts -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚨 Recent Alerts"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_modern_primary"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• Farm A-3: Brown Planthopper infestation detected"
+                    android:textSize="12sp"
+                    android:textColor="@color/accent_modern_red"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Farm B-7: Insufficient irrigation system"
+                android:textSize="12sp"
+                android:textColor="@color/accent_modern_orange"
+                android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• Farm C-2: Nutrient deficiency in rice crops"
+                android:textSize="12sp"
+                android:textColor="@color/accent_modern_orange" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

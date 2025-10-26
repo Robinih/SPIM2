@@ -29,6 +29,8 @@ import com.cvsuagritech.spim.database.CropHealthDatabaseHelper
 import com.cvsuagritech.spim.databinding.FragmentHomeBinding
 import com.cvsuagritech.spim.models.CropHealthRecord
 import com.cvsuagritech.spim.utils.CropHealthSimulator
+import com.cvsuagritech.spim.utils.GamificationManager
+import com.cvsuagritech.spim.models.QuestType
 import java.io.IOException
 import kotlin.math.roundToInt
 import kotlin.random.Random
@@ -39,6 +41,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     
     private lateinit var databaseHelper: CropHealthDatabaseHelper
+    private lateinit var gamificationManager: GamificationManager
     private val GALLERY_REQUEST_CODE = 133
     private var isAnalyzing = false
 
@@ -55,8 +58,15 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         databaseHelper = CropHealthDatabaseHelper(requireContext())
+        gamificationManager = GamificationManager(requireContext())
+        
+        // Initialize gamification
+        gamificationManager.initializeUser("user_001", "Farmer")
+        
         setupUI()
         setupClickListeners()
+        setupCollapsibleMenu()
+        updateGamificationDashboard()
         updateStatus(getString(R.string.status_ready))
     }
 
@@ -76,6 +86,10 @@ class HomeFragment : Fragment() {
         binding.tvOutput.text = getString(R.string.placeholder_result)
         binding.confidencePercentage.text = getString(R.string.placeholder_confidence)
         binding.healthStatus.text = "Healthy"
+    }
+
+    private fun setupCollapsibleMenu() {
+        binding.collapsibleMenu.setFragmentManager(parentFragmentManager)
     }
 
     private fun setupClickListeners() {
@@ -118,6 +132,32 @@ class HomeFragment : Fragment() {
         // Analyze button
         binding.btnAnalyze.setOnClickListener {
             analyzeImage()
+        }
+
+        // Gamification buttons
+        binding.btnViewQuests.setOnClickListener {
+            navigateToQuests()
+        }
+
+        binding.btnViewRewards.setOnClickListener {
+            navigateToRewards()
+        }
+
+        // Rice farming activity buttons
+        binding.btnSoilCheck.setOnClickListener {
+            completeSoilCheckQuest()
+        }
+
+        binding.btnWaterMonitor.setOnClickListener {
+            completeWaterMonitoringQuest()
+        }
+
+        binding.btnFertilizer.setOnClickListener {
+            completeFertilizerApplicationQuest()
+        }
+
+        binding.btnPestControl.setOnClickListener {
+            completePestControlQuest()
         }
 
         // Result text click to search
@@ -315,6 +355,9 @@ class HomeFragment : Fragment() {
                 updateStatus(getString(R.string.status_complete))
                 isAnalyzing = false
                 
+                // Track quest completion
+                checkQuestCompletion(QuestType.ANALYZE_RICE_CROP)
+                
                 Log.i("TAG", "Crop health analysis complete: ${cropHealthRecord.healthStatus} with confidence: $confidence%")
             }
 
@@ -487,6 +530,9 @@ class HomeFragment : Fragment() {
     private fun showRecommendations(pestName: String) {
         // Navigate to recommendations fragment
         Toast.makeText(requireContext(), "Opening recommendations for $pestName", Toast.LENGTH_SHORT).show()
+        
+        // Track quest completion
+        checkQuestCompletion(QuestType.COMPLETE_TREATMENT_RECOMMENDATION)
     }
 
     private fun saveToLogbook() {
@@ -501,5 +547,78 @@ class HomeFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Please select an image first", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateGamificationDashboard() {
+        val profile = gamificationManager.getUserProfile()
+        profile?.let {
+            binding.tvLevelDashboard.text = "Level ${it.level}"
+            binding.tvPointsDashboard.text = "${it.totalPoints} points"
+            binding.tvStreakDashboard.text = "${it.streakDays}"
+            
+            // Update quest completion count
+            val quests = gamificationManager.getDailyQuests()
+            val completedCount = quests.count { quest -> quest.isCompleted }
+            binding.tvQuestsCompleted.text = "$completedCount/${quests.size}"
+            
+            // Update level progress
+            val progress = it.experience % 100
+            binding.progressBarDashboard.progress = progress
+            binding.tvProgressText.text = "$progress/100"
+        }
+    }
+
+    private fun navigateToQuests() {
+        // Navigate to quests fragment
+        val questsFragment = QuestsFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, questsFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun navigateToRewards() {
+        // Navigate to rewards fragment (same as quests for now)
+        val questsFragment = QuestsFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, questsFragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    private fun checkQuestCompletion(action: QuestType) {
+        gamificationManager.checkQuestCompletion(action)
+        updateGamificationDashboard()
+    }
+
+    // Rice-specific quest completion methods
+    private fun completeSoilCheckQuest() {
+        checkQuestCompletion(QuestType.CHECK_SOIL_CONDITIONS)
+        Toast.makeText(requireContext(), "🌱 Soil check completed! +25 points", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun completeWaterMonitoringQuest() {
+        checkQuestCompletion(QuestType.MONITOR_WATER_LEVEL)
+        Toast.makeText(requireContext(), "💧 Water monitoring completed! +20 points", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun completeFertilizerApplicationQuest() {
+        checkQuestCompletion(QuestType.APPLY_FERTILIZER)
+        Toast.makeText(requireContext(), "🌿 Fertilizer application completed! +35 points", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun completePestControlQuest() {
+        checkQuestCompletion(QuestType.CONTROL_PESTS)
+        Toast.makeText(requireContext(), "🐛 Pest control completed! +40 points", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun completeFarmLogUpdateQuest() {
+        checkQuestCompletion(QuestType.UPDATE_FARM_LOG)
+        Toast.makeText(requireContext(), "📝 Farm log updated! +20 points", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun completeFarmingTipsQuest() {
+        checkQuestCompletion(QuestType.READ_FARMING_TIPS)
+        Toast.makeText(requireContext(), "📚 Farming tips read! +15 points", Toast.LENGTH_SHORT).show()
     }
 }

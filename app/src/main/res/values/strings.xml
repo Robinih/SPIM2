@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">AgriSight</string>
     
+    <!-- Mapbox Access Token -->
+    <string name="mapbox_access_token">pk.eyJ1Ijoib3Rha3Vjb2RlcjAyNCIsImEiOiJjbWg3bnk1ZW8wMGQwMmpxdTc1eXRvMzdpIn0.Go0yQY1JdBoV-YHj0jwBwQ</string>
+    
     <!-- Main UI Text -->
     <string name="app_title">AgriSight: Intelligent Crop Health Monitoring</string>
     <string name="app_subtitle">Monitor rice crop health and get AI-powered treatment recommendations</string>

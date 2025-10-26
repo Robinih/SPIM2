@@ -53,4 +53,10 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite-support:$tfliteVersion")
     implementation("org.tensorflow:tensorflow-lite-task-vision:$tfliteVersion")
     implementation("org.tensorflow:tensorflow-lite-metadata:$tfliteVersion")
+    
+    // Mapbox dependencies (as per official documentation)
+    implementation("com.mapbox.maps:android:11.16.0")
+    
+    // Google Play Services (required by Mapbox)
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }

@@ -5,8 +5,13 @@
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".AgriSightApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,6 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SPIM" >
+        
+        <!-- Mapbox API Key -->
+        <meta-data
+            android:name="com.mapbox.token"
+            android:value="pk.eyJ1Ijoib3Rha3Vjb2RlcjAyNCIsImEiOiJjbWg3bnk1ZW8wMGQwMmpxdTc1eXRvMzdpIn0.Go0yQY1JdBoV-YHj0jwBwQ" />
         
         <!-- Welcome Activity (Launcher) -->
         <activity

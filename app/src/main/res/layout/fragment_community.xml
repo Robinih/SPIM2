@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/surface_modern">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gradient_accent_end"
+        android:elevation="12dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:title="🤝 Community"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Filter Chips -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filter_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:singleSelection="true"
+        app:chipSpacingHorizontal="4dp"
+        app:chipSpacingVertical="4dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_all_posts"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="All"
+            android:textSize="11sp"
+            android:checked="true"
+            style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_rice_farming"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="🌾"
+            android:textSize="11sp"
+            style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_questions"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="❓"
+            android:textSize="11sp"
+            style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="💡"
+            android:textSize="11sp"
+            style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_success"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="🏆"
+            android:textSize="11sp"
+            style="@style/Widget.MaterialComponents.Chip.Filter" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Posts RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_posts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="16dp"
+        android:paddingBottom="16dp" />
+
+    <!-- Empty State -->
+    <TextView
+        android:id="@+id/tv_no_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="No posts available"
+        android:textSize="16sp"
+        android:textColor="@color/text_modern_secondary"
+        android:visibility="gone" />
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_create_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/gradient_accent_start"
+        app:tint="@color/white" />
+
+</LinearLayout>
