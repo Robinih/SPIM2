@@ -11,18 +11,18 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient_modern_primary"
+        android:background="@color/accent_modern_green"
         android:elevation="12dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:title="@string/nav_logbook"
-            app:titleTextColor="@color/white"
-            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:navigationIcon="@drawable/ic_logbook_modern"
-            app:navigationIconTint="@color/white" />
+            app:navigationIconTint="@color/white"
+            app:title="@string/nav_logbook"
+            app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
