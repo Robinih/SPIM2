@@ -6,8 +6,8 @@
     <string name="app_description">Makabagong AI na teknolohiya para sa pagsubaybay sa kalusugan ng pananim at pagbibigay ng mga rekomendasyon sa paggamot</string>
 
     <!-- Button Labels -->
-    <string name="btn_capture_image">📷 Demo Kunan</string>
-    <string name="btn_load_image">🖼️ Demo Load</string>
+    <string name="btn_capture_image">📷 Kumuha ng Litrato</string>
+    <string name="btn_load_image">🖼️ Pumili ng Litrato</string>
     <string name="btn_retry">🔄 Subukan Muli</string>
     <string name="btn_analyze">🔍 Suriin ang Larawan</string>
 

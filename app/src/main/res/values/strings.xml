@@ -9,8 +9,8 @@
     <!-- Button Labels -->
     <string name="btn_capture_crop">📷 Capture Crop</string>
     <string name="btn_load_crop">🖼️ Load Crop Image</string>
-    <string name="btn_capture_image">📷 Demo Capture</string>
-    <string name="btn_load_image">🖼️ Demo Load</string>
+    <string name="btn_capture_image">📷 Capture Image</string>
+    <string name="btn_load_image">🖼️ Pick Image</string>
     <string name="btn_retry">🔄 Try Again</string>
     <string name="btn_analyze">🔍 Analyze</string>
     <string name="btn_analyze_health">🔍 Analyze Crop Health</string>
