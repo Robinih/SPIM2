@@ -41,6 +41,11 @@
             android:name=".MainNavActivity"
             android:exported="false" />
             
+        <!-- Help Activity -->
+        <activity
+            android:name=".help.HelpActivity"
+            android:exported="false" />
+
         <!-- Legacy Main Activity (for backward compatibility) -->
         <activity
             android:name=".MainActivity"

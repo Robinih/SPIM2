@@ -138,6 +138,53 @@
     <string name="settings_records">Total Records</string>
     <string name="btn_clear_all_history">Clear All History</string>
     <string name="btn_export_data">Export Data</string>
+    <string name="btn_help_center">Help Center</string>
+    <string name="btn_accessibility_options">Accessibility Options</string>
+    
+    <!-- Help Center -->
+    <string name="help_center_title">Help Center</string>
+    <string name="help_center_content">Welcome to AgriSight Help Center\n\n
+Getting Started\n
+1) Home Screen\n
+ - Use Quick Actions to Capture or Load a crop image.\n
+ - See recent results and access core features.\n\n
+2) Capture or Load Image\n
+ - Tap Capture to take a photo of the crop. Ensure good lighting.\n
+ - Tap Load to pick an existing photo from your gallery.\n
+ - Frame a single plant area avoiding background clutter.\n\n
+3) Analyze Crop Health\n
+ - Press Analyze to run on-device ML (offline capable).\n
+ - Wait for the result: Healthy, Nutrient Deficiency, Pest Damage, or Disease.\n
+ - Review confidence and recommended next steps.\n\n
+Understanding Results\n
+ - Health Status: The detected condition of the crop.\n
+ - Confidence: Model confidence in the prediction.\n
+ - Recommendations: Cultural, biological, or chemical tips to address issues.\n
+ - Save to Logbook: Store the analysis for offline tracking.\n\n
+Working Offline\n
+ - All analysis runs locally; no internet required.\n
+ - Records are saved in a local SQLite database.\n
+ - Export coming soon from Settings - Actions.\n\n
+Logbook\n
+ - View, track, and manage previous analyses.\n
+ - Use it to monitor crop health trends over time.\n\n
+Settings\n
+ - Language: Switch between English and Tagalog.\n
+ - Theme: Choose Light, Dark, or System.\n
+ - Actions: Clear all data or export (coming soon).\n
+ - Help &amp; Accessibility: Open this guide and adjust text size.\n\n
+Accessibility Tips\n
+ - Increase text size from Help &amp; Accessibility.\n
+ - Prefer high-contrast Dark mode in low-light.\n
+ - Use stable framing and hold the device steady when capturing.\n\n
+Troubleshooting\n
+ - Camera denied: Enable camera permission in system settings.\n
+ - Image not loading: Try a smaller image or different photo.\n
+ - Low confidence: Capture a clearer image with better lighting.\n\n
+Privacy\n
+ - Images and records stay on your device unless you export them.\n\n
+Need More Help?\n
+ - Check updates in the app store for new features and fixes.</string>
     
     <!-- Language Options -->
     <string name="language_english">English</string>

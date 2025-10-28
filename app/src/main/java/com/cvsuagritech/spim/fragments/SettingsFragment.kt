@@ -1,6 +1,7 @@
 package com.cvsuagritech.spim.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -86,11 +87,45 @@ class SettingsFragment : Fragment() {
         binding.btnExportData.setOnClickListener {
             showExportDataDialog()
         }
+
+        // Help Center
+        binding.btnHelpCenter.setOnClickListener {
+            startActivity(Intent(requireContext(), com.cvsuagritech.spim.help.HelpActivity::class.java))
+        }
+
+        // Accessibility Options
+        binding.btnAccessibility.setOnClickListener {
+            showAccessibilityDialog()
+        }
     }
 
     private fun loadAppInfo() {
         val totalRecords = databaseHelper.getTotalRecordsCount()
         binding.tvTotalRecords.text = totalRecords.toString()
+    }
+
+    private fun showAccessibilityDialog() {
+        val options = arrayOf("Small", "Default", "Large")
+        AlertDialog.Builder(requireContext())
+            .setTitle("Accessibility: Text Size")
+            .setSingleChoiceItems(options, 1) { dialog, which ->
+                when (which) {
+                    0 -> setAppScale(0.9f)
+                    1 -> setAppScale(1.0f)
+                    2 -> setAppScale(1.15f)
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton(getString(R.string.dialog_cancel)) { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+    private fun setAppScale(scale: Float) {
+        val config = resources.configuration
+        config.fontScale = scale
+        val metrics = resources.displayMetrics
+        requireActivity().baseContext.resources.updateConfiguration(config, metrics)
+        requireActivity().recreate()
     }
 
     private fun showLanguageDialog() {

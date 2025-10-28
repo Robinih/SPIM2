@@ -298,5 +298,63 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Help & Accessibility Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/background_white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="❓ Help &amp; Accessibility"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_help_center"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/btn_help_center"
+                    android:textColor="@color/primary_green"
+                    android:textSize="16sp"
+                    android:drawableStart="@android:drawable/ic_menu_help"
+                    android:drawablePadding="8dp"
+                    app:strokeColor="@color/primary_green"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@color/surface_light"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_accessibility"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/btn_accessibility_options"
+                    android:textColor="@color/primary_green"
+                    android:textSize="16sp"
+                    android:drawableStart="@android:drawable/ic_menu_manage"
+                    android:drawablePadding="8dp"
+                    app:strokeColor="@color/primary_green"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@color/surface_light" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 </ScrollView>
